@@ -7,13 +7,14 @@
     <style>
         /* Romantic Color Theme */
         :root {
-            --primary: #ff6b8b; /* Romantic pink */
-            --secondary: #ffb8b8; /* Light pink */
-            --accent: #ff4757; /* Deep pink */
-            --dark: #2f3542; /* Dark background */
-            --light: #f1f2f6; /* Light text */
-            --success: #2ed573; /* Green for wins */
-            --danger: #ff6b81; /* Red for losses */
+            --primary: #ff6b8b;
+            --secondary: #ffb8b8;
+            --accent: #ff4757;
+            --dark: #2f3542;
+            --light: #f1f2f6;
+            --success: #2ed573;
+            --danger: #ff6b81;
+            --admin: #6c5ce7;
         }
 
         * {
@@ -27,41 +28,240 @@
             background: linear-gradient(135deg, #ffc9d3, #ff9ba9);
             color: var(--dark);
             min-height: 100vh;
+        }
+
+        /* Auth Pages */
+        .auth-container {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            min-height: 100vh;
             padding: 20px;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            width: 100%;
-        }
-
-        h1 {
-            color: var(--accent);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .subtitle {
-            color: var(--dark);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .game-container {
+        .auth-box {
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             padding: 30px;
             width: 100%;
-            max-width: 800px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .auth-box h2 {
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .auth-box input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .auth-box button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .auth-box button:hover {
+            background-color: var(--accent);
+        }
+
+        .auth-link {
+            margin-top: 15px;
+            color: var(--dark);
+        }
+
+        .auth-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Main Layout */
+        .container {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 107, 139, 0.3);
+        }
+
+        .header-left h1 {
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background-color: var(--danger);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .admin-btn {
+            background-color: var(--admin);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Game Container */
+        .game-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             margin-bottom: 30px;
         }
 
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .admin-panel h2 {
+            color: var(--admin);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .admin-stat {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .admin-stat h3 {
+            color: var(--admin);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .admin-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .admin-controls input, .admin-controls select {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            flex-grow: 1;
+        }
+
+        .admin-controls button {
+            padding: 10px 20px;
+            background-color: var(--admin);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .users-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .user-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .user-item:last-child {
+            border-bottom: none;
+        }
+
+        .user-actions button {
+            padding: 5px 10px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .delete-btn {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        /* Rest of your existing game styles... */
         .color-display {
             height: 200px;
             border-radius: 10px;
@@ -164,7 +364,6 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 800px;
         }
 
         .stat-box {
@@ -233,7 +432,6 @@
             padding: 20px;
             margin-top: 20px;
             width: 100%;
-            max-width: 800px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -251,106 +449,218 @@
             margin-bottom: 10px;
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
+        @media (max-width: 768px) {
+            .header-left h1 {
+                font-size: 1.5rem;
             }
             
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .game-container {
-                padding: 20px;
-            }
-            
-            .controls {
+            .header-right {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-end;
+                gap: 5px;
             }
             
-            .btn {
-                width: 100%;
-                max-width: 300px;
+            .user-stats {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .stat-box {
+                min-width: calc(50% - 15px);
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Tum Mere Liye</h1>
-        <p class="subtitle">Romantic Color Prediction Game</p>
-    </header>
-
-    <div class="user-stats">
-        <div class="stat-box">
-            <div class="stat-value" id="balance">1000</div>
-            <div class="stat-label">Balance</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-value" id="current-bet">0</div>
-            <div class="stat-label">Current Bet</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-value" id="wins">0</div>
-            <div class="stat-label">Wins</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-value" id="losses">0</div>
-            <div class="stat-label">Losses</div>
+    <!-- Login Page -->
+    <div class="auth-container" id="login-container">
+        <div class="auth-box">
+            <h2>Login</h2>
+            <input type="text" id="login-username" placeholder="Username">
+            <input type="password" id="login-password" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <p class="auth-link">Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+            <div id="login-message" style="color: var(--danger); margin-top: 10px;"></div>
         </div>
     </div>
 
-    <div class="game-container">
-        <div class="timer" id="timer">30</div>
-        <div class="color-display" id="color-display">Waiting...</div>
-        
-        <div class="result-message" id="result-message"></div>
-        
-        <div class="bet-options">
-            <div class="bet-option red" onclick="selectColor('red')">Red (2x)</div>
-            <div class="bet-option green" onclick="selectColor('green')">Green (3x)</div>
-            <div class="bet-option blue" onclick="selectColor('blue')">Blue (4x)</div>
-            <div class="bet-option violet" onclick="selectColor('violet')">Violet (5x)</div>
+    <!-- Register Page -->
+    <div class="auth-container" id="register-container" style="display: none;">
+        <div class="auth-box">
+            <h2>Register</h2>
+            <input type="text" id="register-username" placeholder="Username">
+            <input type="password" id="register-password" placeholder="Password">
+            <input type="password" id="register-confirm" placeholder="Confirm Password">
+            <button onclick="register()">Register</button>
+            <p class="auth-link">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+            <div id="register-message" style="color: var(--danger); margin-top: 10px;"></div>
         </div>
-        
-        <div class="controls">
-            <input type="number" id="bet-amount" placeholder="Enter bet amount" min="10" value="10" class="btn btn-secondary" style="width: 200px;">
-            <button class="btn btn-primary" onclick="placeBet()">Place Bet</button>
-            <button class="btn btn-primary" onclick="cashOut()">Cash Out</button>
-            <button class="btn btn-secondary" onclick="resetGame()">Reset Game</button>
-        </div>
-        
-        <div class="history" id="history"></div>
     </div>
 
-    <div class="how-to-play">
-        <h2>How To Play</h2>
-        <ol>
-            <li>Enter your bet amount (minimum 10)</li>
-            <li>Select a color to bet on (Red, Green, Blue, or Violet)</li>
-            <li>Click "Place Bet" to confirm your bet</li>
-            <li>Wait for the timer to count down</li>
-            <li>If the result matches your color, you win multiplied by the payout rate</li>
-            <li>You can "Cash Out" early to secure your winnings</li>
-        </ol>
+    <!-- Main Game Container -->
+    <div class="container" id="main-container">
+        <header>
+            <div class="header-left">
+                <h1>Tum Mere Liye</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">U</div>
+                    <span id="username-display">User</span>
+                </div>
+                <button class="admin-btn" id="admin-btn" onclick="toggleAdminPanel()">Admin Panel</button>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <div class="user-stats">
+            <div class="stat-box">
+                <div class="stat-value" id="balance">1000</div>
+                <div class="stat-label">Balance</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="current-bet">0</div>
+                <div class="stat-label">Current Bet</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="wins">0</div>
+                <div class="stat-label">Wins</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="losses">0</div>
+                <div class="stat-label">Losses</div>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <div class="timer" id="timer">30</div>
+            <div class="color-display" id="color-display">Waiting...</div>
+            
+            <div class="result-message" id="result-message"></div>
+            
+            <div class="bet-options">
+                <div class="bet-option red" onclick="selectColor('red')">Red (2x)</div>
+                <div class="bet-option green" onclick="selectColor('green')">Green (3x)</div>
+                <div class="bet-option blue" onclick="selectColor('blue')">Blue (4x)</div>
+                <div class="bet-option violet" onclick="selectColor('violet')">Violet (5x)</div>
+            </div>
+            
+            <div class="controls">
+                <input type="number" id="bet-amount" placeholder="Enter bet amount" min="10" value="10" class="btn btn-secondary" style="width: 200px;">
+                <button class="btn btn-primary" onclick="placeBet()">Place Bet</button>
+                <button class="btn btn-primary" onclick="cashOut()">Cash Out</button>
+                <button class="btn btn-secondary" onclick="resetGame()">Reset Game</button>
+            </div>
+            
+            <div class="history" id="history"></div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div class="admin-panel" id="admin-panel">
+            <h2>Admin Dashboard</h2>
+            
+            <div class="admin-stats">
+                <div class="admin-stat">
+                    <h3>Total Users</h3>
+                    <p id="total-users">0</p>
+                </div>
+                <div class="admin-stat">
+                    <h3>Active Games</h3>
+                    <p id="active-games">0</p>
+                </div>
+                <div class="admin-stat">
+                    <h3>Total Bets</h3>
+                    <p id="total-bets">0</p>
+                </div>
+                <div class="admin-stat">
+                    <h3>Platform Balance</h3>
+                    <p id="platform-balance">0</p>
+                </div>
+            </div>
+            
+            <div class="admin-controls">
+                <input type="number" id="payout-change" placeholder="New payout %">
+                <select id="payout-color">
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="violet">Violet</option>
+                </select>
+                <button onclick="changePayout()">Change Payout</button>
+            </div>
+            
+            <div class="admin-controls">
+                <input type="text" id="search-user" placeholder="Search username">
+                <button onclick="searchUser()">Search</button>
+            </div>
+            
+            <h3 style="margin-top: 20px;">All Users</h3>
+            <div class="users-list" id="users-list">
+                <!-- Users will be populated here -->
+            </div>
+        </div>
+
+        <div class="how-to-play">
+            <h2>How To Play</h2>
+            <ol>
+                <li>Enter your bet amount (minimum 10)</li>
+                <li>Select a color to bet on (Red, Green, Blue, or Violet)</li>
+                <li>Click "Place Bet" to confirm your bet</li>
+                <li>Wait for the timer to count down</li>
+                <li>If the result matches your color, you win multiplied by the payout rate</li>
+                <li>You can "Cash Out" early to secure your winnings</li>
+            </ol>
+        </div>
     </div>
 
     <script>
-        // Game variables
-        let balance = 1000;
-        let currentBet = 0;
-        let selectedColor = null;
-        let currentMultiplier = 1;
-        let wins = 0;
-        let losses = 0;
-        let gameActive = false;
-        let countdown;
-        let timeLeft = 30;
-        let cashOutInterval;
-        let history = [];
-        
-        // DOM elements
+        // Game State
+        const gameState = {
+            users: [
+                { username: 'admin', password: 'admin123', balance: 10000, isAdmin: true, wins: 0, losses: 0 },
+                { username: 'user1', password: 'user123', balance: 1000, isAdmin: false, wins: 0, losses: 0 }
+            ],
+            currentUser: null,
+            gameActive: false,
+            selectedColor: null,
+            currentBet: 0,
+            balance: 1000,
+            wins: 0,
+            losses: 0,
+            timeLeft: 30,
+            countdown: null,
+            cashOutInterval: null,
+            currentMultiplier: 1,
+            history: [],
+            payouts: {
+                red: 2,
+                green: 3,
+                blue: 4,
+                violet: 5
+            },
+            colors: {
+                red: { name: 'Red', color: '#ff4757' },
+                green: { name: 'Green', color: '#2ed573' },
+                blue: { name: 'Blue', color: '#1e90ff' },
+                violet: { name: 'Violet', color: '#9c88ff' }
+            }
+        };
+
+        // DOM Elements
+        const loginContainer = document.getElementById('login-container');
+        const registerContainer = document.getElementById('register-container');
+        const mainContainer = document.getElementById('main-container');
+        const adminPanel = document.getElementById('admin-panel');
+        const adminBtn = document.getElementById('admin-btn');
+        const loginUsername = document.getElementById('login-username');
+        const loginPassword = document.getElementById('login-password');
+        const registerUsername = document.getElementById('register-username');
+        const registerPassword = document.getElementById('register-password');
+        const registerConfirm = document.getElementById('register-confirm');
+        const loginMessage = document.getElementById('login-message');
+        const registerMessage = document.getElementById('register-message');
+        const usernameDisplay = document.getElementById('username-display');
+        const userAvatar = document.getElementById('user-avatar');
         const balanceEl = document.getElementById('balance');
         const currentBetEl = document.getElementById('current-bet');
         const winsEl = document.getElementById('wins');
@@ -360,25 +670,267 @@
         const resultMessageEl = document.getElementById('result-message');
         const betAmountEl = document.getElementById('bet-amount');
         const historyEl = document.getElementById('history');
-        
-        // Color mapping
-        const colors = {
-            red: { name: 'Red', multiplier: 2, color: '#ff4757' },
-            green: { name: 'Green', multiplier: 3, color: '#2ed573' },
-            blue: { name: 'Blue', multiplier: 4, color: '#1e90ff' },
-            violet: { name: 'Violet', multiplier: 5, color: '#9c88ff' }
-        };
-        
-        // Select color function
+        const totalUsersEl = document.getElementById('total-users');
+        const activeGamesEl = document.getElementById('active-games');
+        const totalBetsEl = document.getElementById('total-bets');
+        const platformBalanceEl = document.getElementById('platform-balance');
+        const usersListEl = document.getElementById('users-list');
+
+        // Auth Functions
+        function showRegister() {
+            loginContainer.style.display = 'none';
+            registerContainer.style.display = 'flex';
+            registerMessage.textContent = '';
+        }
+
+        function showLogin() {
+            registerContainer.style.display = 'none';
+            loginContainer.style.display = 'flex';
+            loginMessage.textContent = '';
+        }
+
+        function login() {
+            const username = loginUsername.value.trim();
+            const password = loginPassword.value.trim();
+            
+            if (!username || !password) {
+                loginMessage.textContent = 'Please enter both username and password';
+                return;
+            }
+            
+            const user = gameState.users.find(u => u.username === username && u.password === password);
+            
+            if (!user) {
+                loginMessage.textContent = 'Invalid username or password';
+                return;
+            }
+            
+            gameState.currentUser = user;
+            updateUserDisplay();
+            loginContainer.style.display = 'none';
+            mainContainer.style.display = 'block';
+            
+            // Initialize game with user data
+            gameState.balance = user.balance;
+            gameState.wins = user.wins;
+            gameState.losses = user.losses;
+            updateStats();
+        }
+
+        function register() {
+            const username = registerUsername.value.trim();
+            const password = registerPassword.value.trim();
+            const confirm = registerConfirm.value.trim();
+            
+            if (!username || !password || !confirm) {
+                registerMessage.textContent = 'Please fill all fields';
+                return;
+            }
+            
+            if (password !== confirm) {
+                registerMessage.textContent = 'Passwords do not match';
+                return;
+            }
+            
+            if (username.length < 4) {
+                registerMessage.textContent = 'Username must be at least 4 characters';
+                return;
+            }
+            
+            if (password.length < 6) {
+                registerMessage.textContent = 'Password must be at least 6 characters';
+                return;
+            }
+            
+            if (gameState.users.some(u => u.username === username)) {
+                registerMessage.textContent = 'Username already exists';
+                return;
+            }
+            
+            // Add new user
+            gameState.users.push({
+                username,
+                password,
+                balance: 1000,
+                isAdmin: false,
+                wins: 0,
+                losses: 0
+            });
+            
+            registerMessage.textContent = 'Registration successful!';
+            registerMessage.style.color = 'var(--success)';
+            
+            // Clear form
+            registerUsername.value = '';
+            registerPassword.value = '';
+            registerConfirm.value = '';
+            
+            // Auto switch to login after 2 seconds
+            setTimeout(() => {
+                showLogin();
+                loginUsername.value = username;
+                loginPassword.focus();
+            }, 2000);
+        }
+
+        function logout() {
+            // Save user data before logout
+            if (gameState.currentUser) {
+                gameState.currentUser.balance = gameState.balance;
+                gameState.currentUser.wins = gameState.wins;
+                gameState.currentUser.losses = gameState.losses;
+            }
+            
+            gameState.currentUser = null;
+            mainContainer.style.display = 'none';
+            adminPanel.style.display = 'none';
+            loginContainer.style.display = 'flex';
+            
+            // Reset game state
+            resetGame();
+        }
+
+        function updateUserDisplay() {
+            if (!gameState.currentUser) return;
+            
+            usernameDisplay.textContent = gameState.currentUser.username;
+            userAvatar.textContent = gameState.currentUser.username.charAt(0).toUpperCase();
+            
+            // Show/hide admin button
+            adminBtn.style.display = gameState.currentUser.isAdmin ? 'block' : 'none';
+        }
+
+        // Admin Functions
+        function toggleAdminPanel() {
+            adminPanel.style.display = adminPanel.style.display === 'none' ? 'block' : 'none';
+            
+            if (adminPanel.style.display === 'block') {
+                updateAdminStats();
+                loadAllUsers();
+            }
+        }
+
+        function updateAdminStats() {
+            totalUsersEl.textContent = gameState.users.length;
+            activeGamesEl.textContent = gameState.gameActive ? '1' : '0';
+            
+            // Calculate total bets and platform balance (simplified)
+            const totalBets = gameState.users.reduce((sum, user) => sum + (user.wins + user.losses), 0);
+            const platformBalance = gameState.users.reduce((sum, user) => sum + (1000 - user.balance), 0);
+            
+            totalBetsEl.textContent = totalBets;
+            platformBalanceEl.textContent = platformBalance;
+        }
+
+        function loadAllUsers() {
+            usersListEl.innerHTML = '';
+            
+            gameState.users.forEach(user => {
+                if (user.isAdmin) return; // Skip admin from listing
+                
+                const userItem = document.createElement('div');
+                userItem.className = 'user-item';
+                
+                userItem.innerHTML = `
+                    <div>
+                        <strong>${user.username}</strong>
+                        <div>Balance: ${user.balance}</div>
+                    </div>
+                    <div class="user-actions">
+                        <button class="edit-btn" onclick="editUser('${user.username}')">Edit</button>
+                        <button class="delete-btn" onclick="deleteUser('${user.username}')">Delete</button>
+                    </div>
+                `;
+                
+                usersListEl.appendChild(userItem);
+            });
+        }
+
+        function changePayout() {
+            const color = document.getElementById('payout-color').value;
+            const newPayout = parseInt(document.getElementById('payout-change').value);
+            
+            if (!color || isNaN(newPayout) || newPayout < 1) {
+                alert('Please enter valid payout value');
+                return;
+            }
+            
+            gameState.payouts[color] = newPayout;
+            alert(`Payout for ${color} changed to ${newPayout}x`);
+            
+            // Update bet options display
+            document.querySelector('.red').textContent = `Red (${gameState.payouts.red}x)`;
+            document.querySelector('.green').textContent = `Green (${gameState.payouts.green}x)`;
+            document.querySelector('.blue').textContent = `Blue (${gameState.payouts.blue}x)`;
+            document.querySelector('.violet').textContent = `Violet (${gameState.payouts.violet}x)`;
+        }
+
+        function searchUser() {
+            const searchTerm = document.getElementById('search-user').value.toLowerCase();
+            
+            if (!searchTerm) {
+                loadAllUsers();
+                return;
+            }
+            
+            const filteredUsers = gameState.users.filter(user => 
+                user.username.toLowerCase().includes(searchTerm) && !user.isAdmin
+            );
+            
+            usersListEl.innerHTML = '';
+            
+            filteredUsers.forEach(user => {
+                const userItem = document.createElement('div');
+                userItem.className = 'user-item';
+                
+                userItem.innerHTML = `
+                    <div>
+                        <strong>${user.username}</strong>
+                        <div>Balance: ${user.balance}</div>
+                    </div>
+                    <div class="user-actions">
+                        <button class="edit-btn" onclick="editUser('${user.username}')">Edit</button>
+                        <button class="delete-btn" onclick="deleteUser('${user.username}')">Delete</button>
+                    </div>
+                `;
+                
+                usersListEl.appendChild(userItem);
+            });
+        }
+
+        function editUser(username) {
+            const user = gameState.users.find(u => u.username === username);
+            if (!user) return;
+            
+            const newBalance = prompt(`Edit balance for ${username}`, user.balance);
+            if (newBalance && !isNaN(newBalance)) {
+                user.balance = parseInt(newBalance);
+                loadAllUsers();
+                
+                // If editing current user, update display
+                if (gameState.currentUser && gameState.currentUser.username === username) {
+                    gameState.balance = user.balance;
+                    updateStats();
+                }
+            }
+        }
+
+        function deleteUser(username) {
+            if (!confirm(`Are you sure you want to delete ${username}?`)) return;
+            
+            gameState.users = gameState.users.filter(u => u.username !== username);
+            loadAllUsers();
+        }
+
+        // Game Functions (same as before with small adjustments)
         function selectColor(color) {
-            if (gameActive) {
+            if (gameState.gameActive) {
                 alert('Game is already in progress!');
                 return;
             }
             
-            selectedColor = color;
+            gameState.selectedColor = color;
             
-            // Highlight selected color
             document.querySelectorAll('.bet-option').forEach(option => {
                 option.style.transform = 'scale(1)';
                 option.style.boxShadow = 'none';
@@ -388,12 +940,11 @@
             selectedOption.style.transform = 'scale(1.1)';
             selectedOption.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
         }
-        
-        // Place bet function
+
         function placeBet() {
             const betAmount = parseInt(betAmountEl.value);
             
-            if (isNaN(betAmount) {
+            if (isNaN(betAmount)) {
                 alert('Please enter a valid bet amount!');
                 return;
             }
@@ -403,146 +954,127 @@
                 return;
             }
             
-            if (betAmount > balance) {
+            if (betAmount > gameState.balance) {
                 alert('You don\'t have enough balance!');
                 return;
             }
             
-            if (!selectedColor) {
+            if (!gameState.selectedColor) {
                 alert('Please select a color first!');
                 return;
             }
             
-            if (gameActive) {
+            if (gameState.gameActive) {
                 alert('Game is already in progress!');
                 return;
             }
             
-            // Deduct bet amount from balance
-            balance -= betAmount;
-            currentBet = betAmount;
+            gameState.balance -= betAmount;
+            gameState.currentBet = betAmount;
             updateStats();
             
-            // Start the game
-            gameActive = true;
+            gameState.gameActive = true;
             startCountdown();
             
-            // Start increasing multiplier
-            currentMultiplier = 1;
-            cashOutInterval = setInterval(() => {
-                currentMultiplier += 0.1;
+            gameState.currentMultiplier = 1;
+            gameState.cashOutInterval = setInterval(() => {
+                gameState.currentMultiplier += 0.1;
             }, 1000);
         }
-        
-        // Cash out function
+
         function cashOut() {
-            if (!gameActive) {
+            if (!gameState.gameActive) {
                 alert('No active game to cash out!');
                 return;
             }
             
-            clearInterval(cashOutInterval);
-            clearInterval(countdown);
+            clearInterval(gameState.cashOutInterval);
+            clearInterval(gameState.countdown);
             
-            const payout = Math.floor(currentBet * currentMultiplier);
-            balance += payout;
+            const payout = Math.floor(gameState.currentBet * gameState.currentMultiplier);
+            gameState.balance += payout;
             
-            // Add to history
-            addToHistory(selectedColor, true);
+            addToHistory(gameState.selectedColor, true);
             
-            // Show result
-            resultMessageEl.textContent = `You cashed out at ${currentMultiplier.toFixed(1)}x and won ${payout}!`;
+            resultMessageEl.textContent = `You cashed out at ${gameState.currentMultiplier.toFixed(1)}x and won ${payout}!`;
             resultMessageEl.className = 'result-message win';
             
-            // Reset game
             resetRound();
         }
-        
-        // Start countdown
+
         function startCountdown() {
-            timeLeft = 30;
-            timerEl.textContent = timeLeft;
+            gameState.timeLeft = 30;
+            timerEl.textContent = gameState.timeLeft;
             
-            countdown = setInterval(() => {
-                timeLeft--;
-                timerEl.textContent = timeLeft;
+            gameState.countdown = setInterval(() => {
+                gameState.timeLeft--;
+                timerEl.textContent = gameState.timeLeft;
                 
-                if (timeLeft <= 0) {
-                    clearInterval(countdown);
+                if (gameState.timeLeft <= 0) {
+                    clearInterval(gameState.countdown);
                     endGame();
                 }
             }, 1000);
         }
-        
-        // End game function
+
         function endGame() {
-            clearInterval(cashOutInterval);
+            clearInterval(gameState.cashOutInterval);
             
-            // Generate random result
-            const colorKeys = Object.keys(colors);
+            const colorKeys = Object.keys(gameState.colors);
             const randomColorKey = colorKeys[Math.floor(Math.random() * colorKeys.length)];
-            const resultColor = colors[randomColorKey];
+            const resultColor = gameState.colors[randomColorKey];
             
-            // Display result
             colorDisplayEl.textContent = resultColor.name;
             colorDisplayEl.style.backgroundColor = resultColor.color;
             
-            // Check if player won
-            if (selectedColor === randomColorKey) {
-                const payout = Math.floor(currentBet * resultColor.multiplier);
-                balance += payout;
-                wins++;
+            if (gameState.selectedColor === randomColorKey) {
+                const payout = Math.floor(gameState.currentBet * gameState.payouts[randomColorKey]);
+                gameState.balance += payout;
+                gameState.wins++;
                 
-                resultMessageEl.textContent = `You won ${payout} (${resultColor.multiplier}x)!`;
+                resultMessageEl.textContent = `You won ${payout} (${gameState.payouts[randomColorKey]}x)!`;
                 resultMessageEl.className = 'result-message win';
             } else {
-                losses++;
+                gameState.losses++;
                 
                 resultMessageEl.textContent = `You lost! The color was ${resultColor.name}`;
                 resultMessageEl.className = 'result-message lose';
             }
             
-            // Add to history
-            addToHistory(randomColorKey, selectedColor === randomColorKey);
-            
-            // Reset game
+            addToHistory(randomColorKey, gameState.selectedColor === randomColorKey);
             resetRound();
         }
-        
-        // Add to history
+
         function addToHistory(color, isWin) {
-            history.unshift({ color, isWin });
+            gameState.history.unshift({ color, isWin });
             
-            if (history.length > 10) {
-                history.pop();
+            if (gameState.history.length > 10) {
+                gameState.history.pop();
             }
             
             updateHistoryDisplay();
         }
-        
-        // Update history display
+
         function updateHistoryDisplay() {
             historyEl.innerHTML = '';
             
-            history.forEach(item => {
+            gameState.history.forEach(item => {
                 const historyItem = document.createElement('div');
                 historyItem.className = 'history-item';
-                historyItem.style.backgroundColor = colors[item.color].color;
-                historyItem.textContent = colors[item.color].name.charAt(0);
-                historyItem.title = `${colors[item.color].name} - ${item.isWin ? 'Win' : 'Lose'}`;
+                historyItem.style.backgroundColor = gameState.colors[item.color].color;
+                historyItem.textContent = gameState.colors[item.color].name.charAt(0);
+                historyItem.title = `${gameState.colors[item.color].name} - ${item.isWin ? 'Win' : 'Lose'}`;
                 historyEl.appendChild(historyItem);
             });
         }
-        
-        // Reset round
+
         function resetRound() {
-            gameActive = false;
-            currentBet = 0;
-            selectedColor = null;
-            currentMultiplier = 1;
+            gameState.gameActive = false;
+            gameState.currentBet = 0;
+            gameState.selectedColor = null;
+            gameState.currentMultiplier = 1;
             updateStats();
             
-            // Reset color display after 3 seconds
             setTimeout(() => {
                 colorDisplayEl.textContent = 'Waiting...';
                 colorDisplayEl.style.backgroundColor = 'transparent';
@@ -550,18 +1082,17 @@
                 resultMessageEl.className = 'result-message';
             }, 3000);
         }
-        
-        // Reset game
+
         function resetGame() {
-            clearInterval(countdown);
-            clearInterval(cashOutInterval);
+            clearInterval(gameState.countdown);
+            clearInterval(gameState.cashOutInterval);
             
-            balance = 1000;
-            currentBet = 0;
-            wins = 0;
-            losses = 0;
-            history = [];
-            gameActive = false;
+            gameState.balance = gameState.currentUser.balance;
+            gameState.currentBet = 0;
+            gameState.wins = gameState.currentUser.wins;
+            gameState.losses = gameState.currentUser.losses;
+            gameState.history = [];
+            gameState.gameActive = false;
             
             colorDisplayEl.textContent = 'Waiting...';
             colorDisplayEl.style.backgroundColor = 'transparent';
@@ -572,16 +1103,15 @@
             updateStats();
             updateHistoryDisplay();
         }
-        
-        // Update stats display
+
         function updateStats() {
-            balanceEl.textContent = balance;
-            currentBetEl.textContent = currentBet;
-            winsEl.textContent = wins;
-            lossesEl.textContent = losses;
+            balanceEl.textContent = gameState.balance;
+            currentBetEl.textContent = gameState.currentBet;
+            winsEl.textContent = gameState.wins;
+            lossesEl.textContent = gameState.losses;
         }
-        
-        // Initialize game
+
+        // Initialize
         updateStats();
     </script>
 </body>
